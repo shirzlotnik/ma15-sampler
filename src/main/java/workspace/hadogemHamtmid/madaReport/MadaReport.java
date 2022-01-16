@@ -13,16 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class MadaReport {
     String MDACODE;
-    int IDNum;
-    int IDType;
+    String  IDNum;
+    String IDType;
     String FirstName;
     String LastName;
     String City;
     String Street;
     String BuildingNumber;
     String Barcode;
-    Date GetDate;
-    Date TakeDate;
-    Date ResultDate;
+    String GetDate;
+    String TakeDate;
+    String ResultDate;
 
 }

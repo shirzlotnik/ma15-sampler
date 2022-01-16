@@ -22,17 +22,17 @@ public class ExtractFromCsv extends DefaultExtractionFromFile {
 
     private MadaReport getMadaReport (String[] record) {
         String MDACODE = record[0];
-        int IDNum = Integer.parseInt(record[1]);
-        int IDType = Integer.parseInt(record[2]);
+        String IDNum = record[1];
+        String IDType = record[2];
         String FirstName = record[3];
         String LastName = record[4];
         String City = record[5];
         String Street = record[6];
         String BuildingNumber = record[7];
         String Barcode = record[8];
-        Date GetDate = Date.from(Instant.parse(record[9]));
-        Date TakeDate = Date.from(Instant.parse(record[10]));
-        Date ResultDate = Date.from(Instant.parse(record[11]));
+        String GetDate = record[9];
+        String TakeDate = record[10];
+        String ResultDate = record[11];
         return new MadaReport(MDACODE, IDNum, IDType, FirstName, LastName, City, Street, BuildingNumber,
                 Barcode, GetDate, TakeDate, ResultDate);
     }
@@ -46,6 +46,9 @@ public class ExtractFromCsv extends DefaultExtractionFromFile {
                 String  row = "";
                 while (row != null) {
                     row = reader.readLine();
+                    if (row == null) {
+                        break;
+                    }
                     MadaReport m = getMadaReport(row.split(SPLIT_CSV_LINE));
                     reports.add(m);
                 }
