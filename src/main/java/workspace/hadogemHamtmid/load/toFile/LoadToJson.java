@@ -3,6 +3,7 @@ package workspace.hadogemHamtmid.load.toFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Iterator;
@@ -15,25 +16,28 @@ public class LoadToJson extends DefaultLoadToFile {
 
     public LoadToJson (int maxObjects) {
         this.mapper = new ObjectMapper();
-        this.filePath = String.format("%s%d%s");
         this.fileCount = 0;
         this.maxObjects = maxObjects;
     }
 
     @Override
-    public void load(String directoryPath, List<MadaReport> reports) {
+    public void load(String directoryPath, List<MadaReport> reports) throws IOException {
         Iterator<MadaReport> iterator = reports.listIterator();
-        int objectCount = 0;
+        int objectCount = maxObjects;
         MadaReport m = iterator.next();
-        this.filePath = String.format("%s%d.json", directoryPath, this.fileCount);
-        while (m != null) {
+
+        while (iterator.hasNext()) {
             if (objectCount >= maxObjects) {
-                this.fileCount++;
                 this.filePath = String.format("%s%d.json", directoryPath, this.fileCount);
+                File jsonFile = new File(this.filePath);
+                if (!jsonFile.exists()) {
+                    jsonFile.createNewFile();
+                }
+                this.fileCount++;
                 objectCount = 0;
             }
             try {
-                this.mapper.writeValue(Paths.get(directoryPath).toFile(), m);
+                this.mapper.writeValue(Paths.get(this.filePath).toFile(), m);
                 objectCount++;
             } catch (IOException e) {
                 // trow writing exception

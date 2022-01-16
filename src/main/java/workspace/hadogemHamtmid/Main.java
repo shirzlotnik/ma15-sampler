@@ -1,8 +1,10 @@
 package workspace.hadogemHamtmid;
 
 import workspace.hadogemHamtmid.extract.ExtractFromCsv;
+import workspace.hadogemHamtmid.load.toFile.LoadToJson;
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
@@ -15,5 +17,11 @@ public class Main {
 
         ExtractFromCsv efCSV = new ExtractFromCsv();
         List<MadaReport> reports = efCSV.extract(CSV_FILE_PATH);
+        LoadToJson ltj = new LoadToJson(MAX_OBJECTS);
+        try {
+            ltj.load(JSON_DIRECTORY_PATH, reports);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
