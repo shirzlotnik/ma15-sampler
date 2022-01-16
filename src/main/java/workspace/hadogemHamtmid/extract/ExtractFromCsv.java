@@ -2,6 +2,7 @@ package workspace.hadogemHamtmid.extract;
 
 import workspace.hadogemHamtmid.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.extract.abstraction.ExtractFromFile;
+import workspace.hadogemHamtmid.extract.fileValidation.FileValidation;
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
 import java.io.*;
@@ -10,8 +11,15 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class ExtractFromCsv extends DefaultExtractionFromFile {
     private final String SPLIT_CSV_LINE = ",";
+
+    public ExtractFromCsv () {
+        super();
+        this.fv = new FileValidation();
+    }
+
     private MadaReport getMadaReport (String[] record) {
         String MDACODE = record[0];
         int IDNum = Integer.parseInt(record[1]);
@@ -32,18 +40,20 @@ public class ExtractFromCsv extends DefaultExtractionFromFile {
     @Override
     public List<MadaReport> extract(String filePath) {
         List<MadaReport> reports = new LinkedList<>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
-            String  row = "";
-            while (row != null) {
-                row = reader.readLine();
-                MadaReport m = getMadaReport(row.split(SPLIT_CSV_LINE));
-                reports.add(m);
+        if (this.fv.isFileValid(filePath)) {
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
+                String  row = "";
+                while (row != null) {
+                    row = reader.readLine();
+                    MadaReport m = getMadaReport(row.split(SPLIT_CSV_LINE));
+                    reports.add(m);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return reports;
     }
