@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid.extract;
+package workspace.hadogemHamtmid.extract.abstraction;
 
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
