@@ -13,9 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class LoadToXML extends DefaultLoadToFile<LabTest> {
-    private String filePath;
     private int fileCount;
-    private MakeXMLFormat mXMLf;
+    private final MakeXMLFormat mXMLf;
     private int objectCount;
 
     public LoadToXML (int maxObjects) {
@@ -29,9 +28,6 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
     public void load(String directoryPath, List<LabTest> tests) throws IOException {
         Iterator<LabTest> iterator = tests.listIterator();
         LabTest l = null;
-        BufferedWriter writer = null;
-        File jsonFile = null;
-        String xmlList = "";
         List<LabTest> fixedSizeList = new LinkedList<>();
         while (iterator.hasNext()) {
             if (objectCount >= maxObjects) {

@@ -6,14 +6,12 @@ import health_care_provider.errors.InvalidIdException;
 import health_care_provider.models.PersonInsured;
 
 
-import javafx.scene.input.DataFormat;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.partA.extract.fileValidation.FileValidation;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,7 +63,7 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
         this.fv = new FileValidation();
         if (this.fv.isFileValid(filePath)) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
                 String  row = "";
                 while (row != null) {
                     row = reader.readLine();

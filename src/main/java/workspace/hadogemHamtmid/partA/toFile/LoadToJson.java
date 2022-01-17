@@ -10,8 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class LoadToJson extends DefaultLoadToFile<MadaReport> {
-    private ObjectMapper mapper;
-    private String filePath;
+    private final ObjectMapper mapper;
     private int fileCount;
 
     public LoadToJson (int maxObjects) {

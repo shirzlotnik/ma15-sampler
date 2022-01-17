@@ -8,4 +8,6 @@ import workspace.hadogemHamtmid.partA.toFile.abstraction.LoadToFile;
 @AllArgsConstructor
 public abstract class DefaultLoadToFile<T> implements LoadToFile<T> {
     protected int maxObjects;
+    protected String filePath;
+
 }

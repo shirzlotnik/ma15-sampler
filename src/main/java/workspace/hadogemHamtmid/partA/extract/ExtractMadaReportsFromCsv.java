@@ -38,7 +38,7 @@ public class ExtractMadaReportsFromCsv extends DefaultExtractionFromFile {
         List<MadaReport> reports = new LinkedList<>();
         if (this.fv.isFileValid(filePath)) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
                 String  row = "";
                 while (row != null) {
                     row = reader.readLine();
