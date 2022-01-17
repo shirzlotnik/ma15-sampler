@@ -1,5 +1,6 @@
 package workspace.hadogemHamtmid;
 
+import workspace.hadogemHamtmid.extract.CSVExtractManager;
 import workspace.hadogemHamtmid.partA.PartA;
 import workspace.hadogemHamtmid.partB.PartB;
 
