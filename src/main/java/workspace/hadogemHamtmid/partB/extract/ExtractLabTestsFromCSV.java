@@ -18,6 +18,19 @@ import java.util.List;
 public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
 
 
+    private boolean checkRecordValidation (String[] record) {
+        if (record[0].equals("IDNum")) {
+            return false;
+        } if (record[0].length() < 9) {
+            System.out.println("found invalid ID for:");
+            for (String str:record) {
+                System.out.print(str + ", ");
+            }
+            return false;
+        }
+        return true;
+    }
+
     private LabTest getLabTest (String[] record) {
         String IDNum = record[0];
         String IDType = record[1];
@@ -46,13 +59,6 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
             e.printStackTrace();
         }
 
-         /*
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String date = "02/11/2003";
-        LocalDate JoinDate = LocalDate.parse(date, formatter);
-        int HealthCareId = 9;
-        String HealthCareName = "Shir";
-*/
         return new LabTest(IDNum, IDType, FirstName, LastName, ResultDate, BirthDate, LabCode, StickerNumber,
                 ResultTestCorona, Variant, TestType, JoinDate, HealthCareId, HealthCareName);
     }
@@ -70,8 +76,12 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
                     if (row == null) {
                         break;
                     }
-                    LabTest l = getLabTest(row.split(this.SPLIT_CSV_LINE));
-                    tests.add(l);
+                    String[] record = row.split(this.SPLIT_CSV_LINE);
+                    if (checkRecordValidation(record)) {
+                        LabTest l = getLabTest(record);
+                        tests.add(l);
+
+                    }
                 }
             } catch (FileNotFoundException e) {
                 System.out.println("line 79, class" + Thread.currentThread().getClass().getName());
