@@ -12,5 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 public abstract class DefaultExtractionFromFile implements ExtractFromFile {
     protected FileValidation fv;
+    protected final String SPLIT_CSV_LINE = ",";
 
 }

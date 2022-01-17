@@ -1,21 +1,17 @@
 package workspace.hadogemHamtmid.extract;
 
 import workspace.hadogemHamtmid.extract.abstraction.DefaultExtractionFromFile;
-import workspace.hadogemHamtmid.extract.abstraction.ExtractFromFile;
 import workspace.hadogemHamtmid.extract.fileValidation.FileValidation;
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
 import java.io.*;
-import java.time.Instant;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 
-public class ExtractFromCsv extends DefaultExtractionFromFile {
-    private final String SPLIT_CSV_LINE = ",";
+public class ExtractMadaReportsFromCsv extends DefaultExtractionFromFile {
 
-    public ExtractFromCsv () {
+    public ExtractMadaReportsFromCsv() {
         super();
         this.fv = new FileValidation();
     }

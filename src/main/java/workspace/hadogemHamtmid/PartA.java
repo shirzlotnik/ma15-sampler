@@ -1,6 +1,6 @@
 package workspace.hadogemHamtmid;
 
-import workspace.hadogemHamtmid.extract.ExtractFromCsv;
+import workspace.hadogemHamtmid.extract.ExtractMadaReportsFromCsv;
 import workspace.hadogemHamtmid.load.toFile.LoadToJson;
 import workspace.hadogemHamtmid.madaReport.MadaReport;
 
@@ -15,7 +15,7 @@ public class PartA {
         final String CSV_FILE_PATH = rp.getProperty("CSV_FILE_PATH");
         final int MAX_OBJECTS = Integer.parseInt(rp.getProperty("MAX_OBJECTS"));
 
-        ExtractFromCsv efCSV = new ExtractFromCsv();
+        ExtractMadaReportsFromCsv efCSV = new ExtractMadaReportsFromCsv();
         List<MadaReport> reports = efCSV.extract(CSV_FILE_PATH);
         LoadToJson ltj = new LoadToJson(MAX_OBJECTS);
         try {

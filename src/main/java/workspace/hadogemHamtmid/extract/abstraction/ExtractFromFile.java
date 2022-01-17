@@ -4,6 +4,6 @@ import workspace.hadogemHamtmid.madaReport.MadaReport;
 
 import java.util.List;
 
-public interface ExtractFromFile {
-    public List<MadaReport> extract (String filePath);
+public interface ExtractFromFile<T> {
+    public List<T> extract (String filePath);
 }
