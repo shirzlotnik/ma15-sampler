@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
-public class LoadToJson extends DefaultLoadToFile {
+public class LoadToJson extends DefaultLoadToFile<MadaReport> {
     private ObjectMapper mapper;
     private String filePath;
     private int fileCount;

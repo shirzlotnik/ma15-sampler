@@ -13,14 +13,14 @@ public class MakeXMLFormat implements MakeFormat<UpgradeLabTests> {
 
 
     @Override
-    public String makeFormat(UpgradeLabTests upgradeLabTests, String type) {
+    public String makeFormat(LabTest labTest, String type) {
         String xml = null;
         try {
             JAXBContext context = JAXBContext.newInstance(LabTest.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             StringWriter sw = new StringWriter();
-            marshaller.marshal(upgradeLabTests, sw);
+            marshaller.marshal(labTest, sw);
             xml = sw.toString();
         } catch (JAXBException e) {
             e.printStackTrace();
