@@ -1,8 +1,8 @@
-package workspace.hadogemHamtmid.partA.toFile;
+package workspace.hadogemHamtmid.partA.load;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import workspace.hadogemHamtmid.partA.toFile.abstraction.LoadToFile;
+import workspace.hadogemHamtmid.partA.load.abstraction.LoadToFile;
 
 @NoArgsConstructor
 @AllArgsConstructor

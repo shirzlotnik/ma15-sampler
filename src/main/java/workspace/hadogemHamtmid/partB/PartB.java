@@ -1,9 +1,6 @@
 package workspace.hadogemHamtmid.partB;
 
 import workspace.hadogemHamtmid.ReadProperties;
-import workspace.hadogemHamtmid.partA.extract.ExtractMadaReportsFromCsv;
-import workspace.hadogemHamtmid.partA.madaReport.MadaReport;
-import workspace.hadogemHamtmid.partA.toFile.LoadToJson;
 import workspace.hadogemHamtmid.partB.extract.ExtractLabTestsFromCSV;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.load.LoadToXML;
@@ -23,10 +20,7 @@ public class PartB {
         List<LabTest> tests = elt.extract(LAB_TEST_FILE_PATH);
         LoadToXML ltXML = new LoadToXML(MAX_OBJECTS);
 
-        try {
-            ltXML.load(XML_DIRECTORY_PATH, tests);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ltXML.load(XML_DIRECTORY_PATH, tests);
+
     }
 }

@@ -84,11 +84,8 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
                     }
                 }
             } catch (FileNotFoundException e) {
-                System.out.println("line 79, class" + Thread.currentThread().getClass().getName());
                 e.printStackTrace();
             } catch (IOException e) {
-
-                System.out.println("line 83, class" + Thread.currentThread().getClass().getName());
                 e.printStackTrace();
             }
         }

@@ -1,6 +1,6 @@
 package workspace.hadogemHamtmid.partB.load;
 
-import workspace.hadogemHamtmid.partA.toFile.DefaultLoadToFile;
+import workspace.hadogemHamtmid.partA.load.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.load.toFormat.xml.MakeXMLFormat;
 
@@ -25,25 +25,29 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
     }
 
     @Override
-    public void load(String directoryPath, List<LabTest> tests) throws IOException {
+    public void load(String directoryPath, List<LabTest> tests) {
         Iterator<LabTest> iterator = tests.listIterator();
         LabTest l = null;
         List<LabTest> fixedSizeList = new LinkedList<>();
-        while (iterator.hasNext()) {
-            if (objectCount >= maxObjects) {
-                writeToFile(directoryPath, fixedSizeList);
-                objectCount = 0;
-                fixedSizeList = new LinkedList<>();
+        try {
+            while (iterator.hasNext()) {
+                if (objectCount >= maxObjects) {
+                    writeToFile(directoryPath, fixedSizeList);
+                    objectCount = 0;
+                    fixedSizeList = new LinkedList<>();
+                }
+                if (iterator != null) {
+                    l = iterator.next();
+                    objectCount++;
+                    fixedSizeList.add(l);
+                }
             }
-            if (iterator != null) {
-                l = iterator.next();
-                objectCount++;
-                fixedSizeList.add(l);
-            }
+            writeToFile(directoryPath, fixedSizeList);
+            objectCount = 0;
+        } catch (IOException e) {
+            System.out.println("could not write to file: " + this.filePath);
+            e.printStackTrace();
         }
-        writeToFile(directoryPath, fixedSizeList);
-        objectCount = 0;
-        fixedSizeList = new LinkedList<>();
     }
 
     private void writeToFile (String directoryPath, List<LabTest> fixedSizeList) throws IOException {
