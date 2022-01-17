@@ -3,10 +3,12 @@ package workspace.hadogemHamtmid.partA.load;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import workspace.hadogemHamtmid.partA.madaReport.MadaReport;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class LoadToJson extends DefaultLoadToFile<MadaReport> {
@@ -23,34 +25,45 @@ public class LoadToJson extends DefaultLoadToFile<MadaReport> {
     public void load(String directoryPath, List<MadaReport> reports) {
         Iterator<MadaReport> iterator = reports.listIterator();
         int objectCount = maxObjects;
-        MadaReport m = iterator.next();
-        FileWriter writer = null;
+        List<MadaReport> fixedSizeList = new LinkedList<>();
+        MadaReport m = null;
         try {
-
             while (iterator.hasNext()) {
                 if (objectCount >= maxObjects) {
-                    this.filePath = String.format("%s%s%d.json", directoryPath, "/report", this.fileCount);
-                    File jsonFile = new File(this.filePath);
-                    if (!jsonFile.exists()) {
-                        jsonFile.createNewFile();
-                    }
-                    writer = new FileWriter(jsonFile, true);
-                    this.fileCount++;
+                    writeToFile(directoryPath, fixedSizeList);
                     objectCount = 0;
-                }
-                try {
-                    String json = this.mapper.writeValueAsString(m);
-                    writer.write(json + "\n");
+                    fixedSizeList = new LinkedList<>();
+                } if (iterator != null) {
+                    m = iterator.next();
                     objectCount++;
-                } catch (IOException e) {
-                    System.out.println("could not write to file: " + this.filePath);
-                    e.printStackTrace();
+                    fixedSizeList.add(m);
                 }
-                m = iterator.next();
             }
+            writeToFile(directoryPath, fixedSizeList);
         } catch (IOException e) {
             System.out.println("could not write to file: " + this.filePath);
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void writeToFile(String directoryPath, List<MadaReport> fixedSizeList) throws IOException {
+        if (fixedSizeList.size() == 0) {
+            return;
+        }
+        this.filePath = String.format("%s%s%d.json", directoryPath, "/report", this.fileCount);
+        File jsonFile = new File(this.filePath);
+        if (!jsonFile.exists()) {
+            jsonFile.createNewFile();
+        }
+        BufferedWriter writer = new BufferedWriter(new FileWriter(jsonFile));
+        if (fixedSizeList == null) {
+            fixedSizeList = new LinkedList<>();
+        }
+        String json = this.mapper.writeValueAsString(fixedSizeList);
+        writer.write(json);
+        this.fileCount++;
+        writer.flush();
+        writer.close();
     }
 }

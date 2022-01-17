@@ -16,6 +16,13 @@ public class ExtractMadaReportsFromCsv extends DefaultExtractionFromFile {
         this.fv = new FileValidation();
     }
 
+    private boolean checkRecordValidation (String[] record) {
+        if (record[0].equals("MDACODE")) {
+            return false;
+        }
+        return true;
+    }
+
     private MadaReport getMadaReport (String[] record) {
         String MDACODE = record[0];
         String IDNum = record[1];
@@ -45,8 +52,11 @@ public class ExtractMadaReportsFromCsv extends DefaultExtractionFromFile {
                     if (row == null) {
                         break;
                     }
-                    MadaReport m = getMadaReport(row.split(SPLIT_CSV_LINE));
-                    reports.add(m);
+                    String[] record = row.split(SPLIT_CSV_LINE);
+                    if (checkRecordValidation(record)) {
+                        MadaReport m = getMadaReport(record);
+                        reports.add(m);
+                    }
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

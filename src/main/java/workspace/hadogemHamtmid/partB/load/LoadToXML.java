@@ -50,7 +50,8 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
         }
     }
 
-    private void writeToFile (String directoryPath, List<LabTest> fixedSizeList) throws IOException {
+    @Override
+    public void writeToFile (String directoryPath, List<LabTest> fixedSizeList) throws IOException {
         if (fixedSizeList.size() == 0) {
             return;
         }
