@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid;
+package workspace.hadogemHamtmid.extract;
 
 import workspace.hadogemHamtmid.partA.extract.ExtractMadaReportsFromCsv;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
