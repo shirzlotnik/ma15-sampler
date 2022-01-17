@@ -9,11 +9,12 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
 
-public class MakeXMLFormat implements MakeFormat<UpgradeLabTests> {
+public class MakeXMLFormat implements MakeFormat<LabTest> {
+
 
 
     @Override
-    public String makeFormat(LabTest labTest, String type) {
+    public String makeFormat(LabTest labTest) {
         String xml = null;
         try {
             JAXBContext context = JAXBContext.newInstance(LabTest.class);

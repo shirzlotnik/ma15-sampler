@@ -47,7 +47,7 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
             }
             try {
                 MakeXMLFormat mXMLf = new MakeXMLFormat();
-                String xml = mXMLf.makeFormat(l, "xml");
+                String xml = mXMLf.makeFormat(l);
                 writer.write(xml + "\n");
                 //this.mapper.writeValue(Paths.get(this.filePath).toFile(), m);
                 objectCount++;
@@ -55,7 +55,7 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
                 // trow writing exception
                 e.printStackTrace();
             }
-            m = iterator.next();
+            l = iterator.next();
         }
     }
 
