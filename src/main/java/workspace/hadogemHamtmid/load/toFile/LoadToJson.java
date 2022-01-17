@@ -6,6 +6,7 @@ import workspace.hadogemHamtmid.madaReport.MadaReport;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Paths;
@@ -28,7 +29,7 @@ public class LoadToJson extends DefaultLoadToFile {
         Iterator<MadaReport> iterator = reports.listIterator();
         int objectCount = maxObjects;
         MadaReport m = iterator.next();
-
+        FileWriter writer = null;
         while (iterator.hasNext()) {
             if (objectCount >= maxObjects) {
                 this.filePath = String.format("%s%s%d.json", directoryPath, "/report", this.fileCount);
@@ -36,12 +37,14 @@ public class LoadToJson extends DefaultLoadToFile {
                 if (!jsonFile.exists()) {
                     jsonFile.createNewFile();
                 }
+                writer = new FileWriter(jsonFile, true);
                 this.fileCount++;
                 objectCount = 0;
             }
             try {
-                FileReader reader;
-                this.mapper.writeValue(Paths.get(this.filePath).toFile(), m);
+                String json = this.mapper.writeValueAsString(m);
+                writer.write(json + "\n");
+                //this.mapper.writeValue(Paths.get(this.filePath).toFile(), m);
                 objectCount++;
             } catch (IOException e) {
                 // trow writing exception
