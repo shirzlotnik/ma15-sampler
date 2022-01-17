@@ -19,8 +19,8 @@ public class MakeXMLFormat implements MakeFormat<LabTest> {
         XStream xstream = new XStream();
         xstream.alias("labTest", LabTest.class);
         xstream.alias("labTests", LabTests.class);
-
-        String xml = xstream.toXML(labTests);
+        
+        String xml = xstream.toXML(list);
         return xml;
     }
 }
