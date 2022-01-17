@@ -20,4 +20,18 @@ public class LabTest {
     String Variant;
     String TestType;
 
+    public LabTest (LabTest l) {
+        IDNum = l.IDNum;
+        IDType = l.IDType;
+        FirstName = l.FirstName;
+        LastName = l.LastName;
+        ResultDate = l.ResultDate;
+        BirthDate = l.BirthDate;
+        LabCode = l.LabCode;
+        StickerNumber = l.StickerNumber;
+        ResultTestCorona = l.ResultTestCorona;
+        Variant = l.Variant;
+        TestType = l.TestType;
+    }
+
 }
