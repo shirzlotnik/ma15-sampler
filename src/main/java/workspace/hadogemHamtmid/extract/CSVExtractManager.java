@@ -6,7 +6,7 @@ import workspace.hadogemHamtmid.partB.extract.ExtractLabTestsFromCSV;
 
 import java.util.HashMap;
 
-public class CSVExtractManager {
+public class CSVExtractManager extends DefaultExtractManager{
     HashMap<String, DefaultExtractionFromFile> objectAndExtractor;
 
     public CSVExtractManager() {
@@ -16,6 +16,7 @@ public class CSVExtractManager {
         }};
     }
 
+    @Override
     public DefaultExtractionFromFile getExtractor (String type) {
         return this.objectAndExtractor.get(type);
     }

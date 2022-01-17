@@ -1,6 +1,7 @@
 package workspace.hadogemHamtmid;
 
 import workspace.hadogemHamtmid.extract.CSVExtractManager;
+import workspace.hadogemHamtmid.extract.ExtractManager;
 import workspace.hadogemHamtmid.partA.PartA;
 import workspace.hadogemHamtmid.partB.PartB;
 
@@ -9,10 +10,10 @@ public class Main {
         ReadProperties rp = new ReadProperties("/Users/shirzlotnik/javaProjects/hadogem_hamtmid/ma15-sampler/src/main/resources/config.properties");
         final int MAX_OBJECTS = Integer.parseInt(rp.getProperty("MAX_OBJECTS"));
         LoadManager loadManager = new LoadManager(MAX_OBJECTS);
-        CSVExtractManager csvExtractManager = new CSVExtractManager();
+        ExtractManager extractManager = new ExtractManager();
 
-        PartA A = new PartA(loadManager, rp, csvExtractManager);
+        PartA A = new PartA(loadManager, rp, extractManager);
 
-        PartB B = new PartB(loadManager, rp, csvExtractManager);
+        PartB B = new PartB(loadManager, rp, extractManager);
     }
 }
