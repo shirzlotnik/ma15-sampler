@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@XmlRootElement (name = "labTest")
 public class LabTest {
     String IDNum;
     String IDType;
