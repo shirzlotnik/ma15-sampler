@@ -5,10 +5,6 @@ import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.labTest.LabTests;
 import workspace.hadogemHamtmid.partB.load.toFormat.abstraction.MakeFormat;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.StringWriter;
 import java.util.List;
 
 public class MakeXMLFormat implements MakeFormat<LabTest> {
@@ -19,7 +15,7 @@ public class MakeXMLFormat implements MakeFormat<LabTest> {
         XStream xstream = new XStream();
         xstream.alias("labTest", LabTest.class);
         xstream.alias("labTests", LabTests.class);
-        
+
         String xml = xstream.toXML(list);
         return xml;
     }
