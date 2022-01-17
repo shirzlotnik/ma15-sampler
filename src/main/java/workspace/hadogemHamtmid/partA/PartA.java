@@ -1,9 +1,8 @@
 package workspace.hadogemHamtmid.partA;
 
-import workspace.hadogemHamtmid.extract.CSVExtractManager;
 import workspace.hadogemHamtmid.LoadManager;
 import workspace.hadogemHamtmid.ReadProperties;
-import workspace.hadogemHamtmid.extract.ExtractManager;
+import workspace.hadogemHamtmid.ExtractManager;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.partA.load.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partA.madaReport.MadaReport;
