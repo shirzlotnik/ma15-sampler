@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/lib/health_care_provider-1.0-jar-with-dependencies.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib" />
+    </SOURCES>
   </library>
 </component>

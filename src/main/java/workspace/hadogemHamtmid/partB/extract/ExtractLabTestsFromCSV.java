@@ -1,11 +1,11 @@
 package workspace.hadogemHamtmid.partB.extract;
 
-/*
+
 import health_care_provider.HealthCareInfoProvider;
 import health_care_provider.errors.InvalidIdException;
 import health_care_provider.models.PersonInsured;
 
- */
+
 import javafx.scene.input.DataFormat;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.partA.extract.fileValidation.FileValidation;
@@ -32,7 +32,7 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
         String ResultTestCorona = record[8];
         String Variant = record[9];
         String TestType = record[10];
-        /*
+
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
         int id = Integer.parseInt(IDNum);
         int idType = Integer.parseInt(IDType);
@@ -48,13 +48,13 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
             e.printStackTrace();
         }
 
-         */
+         /*
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String date = "02/11/2003";
         LocalDate JoinDate = LocalDate.parse(date, formatter);
         int HealthCareId = 9;
         String HealthCareName = "Shir";
-
+*/
         return new LabTest(IDNum, IDType, FirstName, LastName, ResultDate, BirthDate, LabCode, StickerNumber,
                 ResultTestCorona, Variant, TestType, JoinDate, HealthCareId, HealthCareName);
     }
