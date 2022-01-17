@@ -4,6 +4,7 @@ import workspace.hadogemHamtmid.partA.toFile.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.load.toFormat.xml.MakeXMLFormat;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,36 +28,46 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
     @Override
     public void load(String directoryPath, List<LabTest> tests) throws IOException {
         Iterator<LabTest> iterator = tests.listIterator();
-        LabTest l = iterator.next();
-        FileWriter writer = null;
+        LabTest l = null;
+        BufferedWriter writer = null;
         File jsonFile = null;
         String xmlList = "";
         List<LabTest> fixedSizeList = new LinkedList<>();
         while (iterator.hasNext()) {
-            l = iterator.next();
-            objectCount++;
-            fixedSizeList.add(l);
             if (objectCount >= maxObjects) {
                 writeToFile(directoryPath, fixedSizeList);
                 objectCount = 0;
                 fixedSizeList = new LinkedList<>();
             }
+            if (iterator != null) {
+                l = iterator.next();
+                objectCount++;
+                fixedSizeList.add(l);
+            }
         }
+        writeToFile(directoryPath, fixedSizeList);
+        objectCount = 0;
+        fixedSizeList = new LinkedList<>();
     }
 
     private void writeToFile (String directoryPath, List<LabTest> fixedSizeList) throws IOException {
+        if (fixedSizeList.size() == 0) {
+            return;
+        }
         this.filePath = String.format("%s%s%d.xml", directoryPath, "/labTest", this.fileCount);
         File xmlFile = new File(this.filePath);
         if (!xmlFile.exists()) {
             xmlFile.createNewFile();
         }
-        FileWriter writer = new FileWriter(xmlFile, true);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(xmlFile));
         if (fixedSizeList == null) {
             fixedSizeList = new LinkedList<>();
         }
         String xml = mXMLf.makeListFormat(fixedSizeList);
         writer.write(xml);
         this.fileCount++;
+        writer.flush();
+        writer.close();
     }
 
 }

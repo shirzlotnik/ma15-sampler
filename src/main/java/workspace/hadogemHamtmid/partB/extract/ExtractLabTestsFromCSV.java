@@ -8,6 +8,7 @@ import health_care_provider.models.PersonInsured;
  */
 import javafx.scene.input.DataFormat;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
+import workspace.hadogemHamtmid.partA.extract.fileValidation.FileValidation;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 
 import java.io.*;
@@ -61,6 +62,7 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
     @Override
     public List<LabTest> extract(String filePath) {
         List<LabTest> tests = new LinkedList<>();
+        this.fv = new FileValidation();
         if (this.fv.isFileValid(filePath)) {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(new File(filePath)));
@@ -74,8 +76,11 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
                     tests.add(l);
                 }
             } catch (FileNotFoundException e) {
+                System.out.println("line 79, class" + Thread.currentThread().getClass().getName());
                 e.printStackTrace();
             } catch (IOException e) {
+
+                System.out.println("line 83, class" + Thread.currentThread().getClass().getName());
                 e.printStackTrace();
             }
         }

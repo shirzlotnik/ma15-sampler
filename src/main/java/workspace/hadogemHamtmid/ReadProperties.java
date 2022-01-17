@@ -19,8 +19,10 @@ public class ReadProperties {
             properties.load(inputStream);
 
             propertiesMap.put("JSON_DIRECTORY_PATH", properties.getProperty("JSON_DIRECTORY_PATH"));
-            propertiesMap.put("CSV_FILE_PATH", properties.getProperty("CSV_FILE_PATH"));
+            propertiesMap.put("MADA_REPORTS_FILE_PATH", properties.getProperty("MADA_REPORTS_FILE_PATH"));
             propertiesMap.put("MAX_OBJECTS", properties.getProperty("MAX_OBJECTS"));
+            propertiesMap.put("XML_DIRECTORY_PATH", properties.getProperty("XML_DIRECTORY_PATH"));
+            propertiesMap.put("LAB_TEST_FILE_PATH", properties.getProperty("LAB_TEST_FILE_PATH"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,8 +30,11 @@ public class ReadProperties {
 
     public ReadProperties getInstance () {
         propertiesMap.put("JSON_DIRECTORY_PATH", properties.getProperty("JSON_DIRECTORY_PATH"));
-        propertiesMap.put("CSV_FILE_PATH", properties.getProperty("CSV_FILE_PATH"));
+        propertiesMap.put("MADA_REPORTS_FILE_PATH", properties.getProperty("MADA_REPORTS_FILE_PATH"));
         propertiesMap.put("MAX_OBJECTS", properties.getProperty("MAX_OBJECTS"));
+        propertiesMap.put("XML_DIRECTORY_PATH", properties.getProperty("XML_DIRECTORY_PATH"));
+        propertiesMap.put("LAB_TEST_FILE_PATH", properties.getProperty("LAB_TEST_FILE_PATH"));
+
         return this;
     }
 
