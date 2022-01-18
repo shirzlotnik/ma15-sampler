@@ -12,22 +12,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LoadCrossedDataToJson extends DefaultLoadToFile<CrossMadaReportAndLabTest> {
+public class LoadCrossedDataToJson<T> extends DefaultLoadToFile<T> {
     private final ObjectMapper mapper;
     private int fileCount;
 
-    public LoadCrossedDataToJson(int maxObjects, String filePath) {
-        super(maxObjects, filePath);
+    public LoadCrossedDataToJson(int maxObjects) {
+        super();
+        this.maxObjects = maxObjects;
         this.mapper = new ObjectMapper();
         this.fileCount = 0;
     }
 
     @Override
-    public void load(String directoryPath, List<CrossMadaReportAndLabTest> reports) {
-        Iterator<CrossMadaReportAndLabTest> iterator = reports.listIterator();
+    public void load(String directoryPath, List<T> reports) {
+        Iterator<T> iterator = reports.listIterator();
         int objectCount = maxObjects;
-        List<CrossMadaReportAndLabTest> fixedSizeList = new LinkedList<>();
-        CrossMadaReportAndLabTest c = null;
+        List<T> fixedSizeList = new LinkedList<>();
+        T c = null;
         try {
             while (iterator.hasNext()) {
                 if (objectCount >= maxObjects) {
@@ -48,7 +49,7 @@ public class LoadCrossedDataToJson extends DefaultLoadToFile<CrossMadaReportAndL
     }
 
     @Override
-    public void writeToFile(String directoryPath, List<CrossMadaReportAndLabTest> fixedSizeList) throws IOException {
+    public void writeToFile(String directoryPath, List<T> fixedSizeList) throws IOException {
         if (fixedSizeList.size() == 0) {
             return;
         }

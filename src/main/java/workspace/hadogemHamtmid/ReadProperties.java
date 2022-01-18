@@ -29,6 +29,9 @@ public class ReadProperties {
             propertiesMap.put("LOADER_PART_A", properties.getProperty("LOADER_PART_A"));
             propertiesMap.put("EXTRACTOR_PART_A", properties.getProperty("EXTRACTOR_PART_A"));
             propertiesMap.put("EXTRACTOR_MANAGER_PART_A", properties.getProperty("EXTRACTOR_MANAGER_PART_A"));
+            propertiesMap.put("POSITIVE_CORONA_PEOPLE_DIRECTORY_PATH", properties.getProperty("POSITIVE_CORONA_PEOPLE_DIRECTORY_PATH"));
+            propertiesMap.put("LOADER_PART_C", properties.getProperty("LOADER_PART_C"));
+
 
         } catch (IOException e) {
             e.printStackTrace();

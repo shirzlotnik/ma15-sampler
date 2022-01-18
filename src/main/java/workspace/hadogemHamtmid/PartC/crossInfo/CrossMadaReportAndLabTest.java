@@ -4,19 +4,20 @@ import workspace.hadogemHamtmid.PartC.crossInfo.abstractions.DefaultCrossResults
 import workspace.hadogemHamtmid.PartC.crossInfo.crossResults.CrossResults;
 import workspace.hadogemHamtmid.partA.madaReport.MadaReport;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
+import workspace.hadogemHamtmid.partB.labTest.LabTestPlusHealthCare;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CrossMadaReportAndLabTest extends DefaultCrossResults<CrossResults, MadaReport, LabTest> {
+public class CrossMadaReportAndLabTest extends DefaultCrossResults<CrossResults, MadaReport, LabTestPlusHealthCare> {
     HashSet<String> ids;
 
-    private LabTest findMatchingID (String id, List<LabTest> labTests) {
+    private LabTestPlusHealthCare findMatchingID (String id, List<LabTestPlusHealthCare> labTests) {
         if (this.ids.contains(id)) {
             return null;
         }
-        for (LabTest labTest:labTests) {
+        for (LabTestPlusHealthCare labTest:labTests) {
             if (labTest.getIDNum().equals(id)) {
                 this.ids.add(id);
                 return labTest;
@@ -25,7 +26,7 @@ public class CrossMadaReportAndLabTest extends DefaultCrossResults<CrossResults,
         return null;
     }
 
-    private CrossResults crossLabTestAndMadaReport (MadaReport report, LabTest test) {
+    private CrossResults crossLabTestAndMadaReport (MadaReport report, LabTestPlusHealthCare test) {
         String IDNum = report.getIDNum();
         String IDType = report.getIDType();
         String FirstName = report.getFirstName();
@@ -50,12 +51,12 @@ public class CrossMadaReportAndLabTest extends DefaultCrossResults<CrossResults,
     }
 
     @Override
-    public List<CrossResults> crossDBs(List<MadaReport> listK, List<LabTest> listP) {
+    public List<CrossResults> crossDBs(List<MadaReport> listK, List<LabTestPlusHealthCare> listP) {
         this.crossedResult = new LinkedList<>();
         this.ids = new HashSet<>();
         for (MadaReport report: listK) {
             String idNUm = report.getIDNum();
-            LabTest test = findMatchingID(idNUm, listP);
+            LabTestPlusHealthCare test = findMatchingID(idNUm, listP);
             if (test != null) {
                 CrossResults crossResults = crossLabTestAndMadaReport(report, test);
                 if (crossResults != null) {

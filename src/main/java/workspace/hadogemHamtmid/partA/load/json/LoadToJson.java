@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LoadToJson extends DefaultLoadToFile<MadaReport> {
+public class LoadToJson<T> extends DefaultLoadToFile<T> {
     private final ObjectMapper mapper;
     private int fileCount;
 
@@ -23,11 +23,11 @@ public class LoadToJson extends DefaultLoadToFile<MadaReport> {
     }
 
     @Override
-    public void load(String directoryPath, List<MadaReport> reports) {
-        Iterator<MadaReport> iterator = reports.listIterator();
+    public void load(String directoryPath, List<T> reports) {
+        Iterator<T> iterator = reports.listIterator();
         int objectCount = maxObjects;
-        List<MadaReport> fixedSizeList = new LinkedList<>();
-        MadaReport m = null;
+        List<T> fixedSizeList = new LinkedList<>();
+        T m = null;
         try {
             while (iterator.hasNext()) {
                 if (objectCount >= maxObjects) {
@@ -48,7 +48,7 @@ public class LoadToJson extends DefaultLoadToFile<MadaReport> {
     }
 
     @Override
-    public void writeToFile(String directoryPath, List<MadaReport> fixedSizeList) throws IOException {
+    public void writeToFile(String directoryPath, List<T> fixedSizeList) throws IOException {
         if (fixedSizeList.size() == 0) {
             return;
         }

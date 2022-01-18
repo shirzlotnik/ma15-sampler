@@ -1,5 +1,6 @@
 package workspace.hadogemHamtmid.partB;
 
+import lombok.Data;
 import workspace.hadogemHamtmid.ETLManagers.LoadManager;
 import workspace.hadogemHamtmid.ReadProperties;
 import workspace.hadogemHamtmid.ETLManagers.ExtractManager;
@@ -12,9 +13,12 @@ import workspace.hadogemHamtmid.partB.transform.abstraction.DefaultTransformer;
 
 import java.util.List;
 
+@Data
 public class PartB {
+    List<LabTestPlusHealthCare> upgradedTests;
 
-    public PartB (LoadManager loadManager, ReadProperties rp, ExtractManager extractManager) {
+    public PartB (LoadManager loadManager, ExtractManager extractManager) {
+        ReadProperties rp = loadManager.getRp();
         final String XML_DIRECTORY_PATH = rp.getProperty("XML_DIRECTORY_PATH");
         final String LAB_TEST_FILE_PATH = rp.getProperty("LAB_TEST_FILE_PATH");
         final String TRANSFORMER_PART_B = rp.getProperty("TRANSFORMER_PART_B");
@@ -27,10 +31,10 @@ public class PartB {
         List<LabTest> tests = elt.extract(LAB_TEST_FILE_PATH);
         TransformManager transformManager = new TransformManager();
         DefaultTransformer defaultTransformer = transformManager.getTransformer(TRANSFORMER_PART_B);
-        List<LabTestPlusHealthCare> upgradedTest = defaultTransformer.upgrade(tests);
+        this.upgradedTests = defaultTransformer.upgrade(tests);
         DefaultLoadToFile ltXML = loadManager.getLoadFile(LOADER_PART_B);
 
-        ltXML.load(XML_DIRECTORY_PATH, upgradedTest);
+        ltXML.load(XML_DIRECTORY_PATH, this.upgradedTests);
 
     }
 }
