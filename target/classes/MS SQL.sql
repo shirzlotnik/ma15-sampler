@@ -1,4 +1,4 @@
-CREATE TABLE serology(
+CREATE TABLE LabResults_SerologyKits (
   IDNum varchar(10),
   IDType varchar(2)  ,
   FirstName varchar(20),
@@ -9,5 +9,7 @@ CREATE TABLE serology(
   StickerNumber varchar(40) ,
   Antidoters INT,
   KitNumber varchar(3),
+  HaveAntidotes BOOLEAN DEFAULT false,
+  PRIMARY KEY (IDNum)
 )
 
