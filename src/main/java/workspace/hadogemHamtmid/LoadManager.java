@@ -1,7 +1,7 @@
 package workspace.hadogemHamtmid;
 
 import lombok.Data;
-import workspace.hadogemHamtmid.partA.load.DefaultLoadToFile;
+import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partA.load.LoadToJson;
 import workspace.hadogemHamtmid.partB.load.LoadToXML;
 

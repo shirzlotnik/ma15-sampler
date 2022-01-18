@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid.partA.load;
+package workspace.hadogemHamtmid.partA.load.abstraction;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

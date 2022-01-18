@@ -1,6 +1,6 @@
 package workspace.hadogemHamtmid.partB.load;
 
-import workspace.hadogemHamtmid.partA.load.DefaultLoadToFile;
+import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.load.toFormat.xml.MakeXMLFormat;
 

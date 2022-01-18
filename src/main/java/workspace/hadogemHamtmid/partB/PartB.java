@@ -5,7 +5,7 @@ import workspace.hadogemHamtmid.ReadProperties;
 import workspace.hadogemHamtmid.ExtractManager;
 import workspace.hadogemHamtmid.TransformManager;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
-import workspace.hadogemHamtmid.partA.load.DefaultLoadToFile;
+import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 import workspace.hadogemHamtmid.partB.labTest.LabTestPlusHealthCare;
 import workspace.hadogemHamtmid.partB.transform.abstraction.DefaultTransformer;
