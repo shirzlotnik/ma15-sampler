@@ -9,5 +9,7 @@ CREATE TABLE serology(
   StickerNumber varchar(40) ,
   Antidoters INT,
   KitNumber varchar(3),
+  HaveAntidotes BOOLEAN DEFAULT false,
+  PRIMARY KEY (IDNum)
 )
 

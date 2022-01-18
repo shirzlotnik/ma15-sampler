@@ -20,11 +20,11 @@ public class Serology {
     String StickerNumber;
     int AntiDotes;
     String KitNumber;
-    boolean haveAntiDotes;
+    boolean haveAntidotes;
 
 
     public void checkResistance (HashMap<String, Integer> kitMap) {
         int required = kitMap.get(this.KitNumber);
-        this.haveAntiDotes = (this.AntiDotes >= required);
+        this.haveAntidotes = (this.AntiDotes >= required);
     }
 }
