@@ -23,6 +23,8 @@ public class Serology {
     boolean haveAntidotes;
 
 
+
+
     public void checkResistance (HashMap<String, Integer> kitMap) {
         int required = kitMap.get(this.KitNumber);
         this.haveAntidotes = (this.AntiDotes >= required);
