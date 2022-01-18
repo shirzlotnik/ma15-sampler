@@ -2,7 +2,6 @@ package workspace.hadogemHamtmid.PartC.crossInfo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
-import workspace.hadogemHamtmid.partA.madaReport.MadaReport;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,12 +16,14 @@ import java.util.List;
 public class LoadCrossedDataToJson<T> extends DefaultLoadToFile<T> {
     private final ObjectMapper mapper;
     private int fileCount;
+    private long maxSize;
 
-    public LoadCrossedDataToJson(int maxObjects) {
+    public LoadCrossedDataToJson(long maxSize) {
         super();
-        this.maxObjects = maxObjects;
+        this.maxObjects = 0;
         this.mapper = new ObjectMapper();
         this.fileCount = 0;
+        this.maxSize = maxSize;
     }
 
     @Override
@@ -31,13 +32,14 @@ public class LoadCrossedDataToJson<T> extends DefaultLoadToFile<T> {
         int objectCount = maxObjects;
         List<T> fixedSizeList = new LinkedList<>();
         T c = null;
-        long maxBytes = 20000000;
         this.filePath = String.format("%s%s%d.json", directoryPath, "/positive_corona_people", this.fileCount);
         this.fileCount++;
         try {
             while (iterator.hasNext()) {
                 File jsonFile = new File(this.filePath);
-                if (Files.size(Paths.get(this.filePath)) < maxBytes) {
+                jsonFile.createNewFile();
+                jsonFile.canWrite();
+                if (Files.size(Paths.get(this.filePath)) < this.maxSize) {
                     writeToFile(directoryPath, fixedSizeList);
                     fixedSizeList = new LinkedList<>();
                 } else {

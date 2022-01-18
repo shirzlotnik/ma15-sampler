@@ -34,7 +34,7 @@ public class ReadProperties {
             propertiesMap.put("EXTRACTOR_PART_D", properties.getProperty("EXTRACTOR_PART_D"));
             propertiesMap.put("EXTRACTOR_MANAGER_PART_D", properties.getProperty("EXTRACTOR_MANAGER_PART_D"));
             propertiesMap.put("SEROLOGY_FILE_PATH", properties.getProperty("SEROLOGY_FILE_PATH"));
-
+            propertiesMap.put("MAX_SIZE", properties.getProperty("MAX_SIZE"));
         } catch (IOException e) {
             e.printStackTrace();
         }

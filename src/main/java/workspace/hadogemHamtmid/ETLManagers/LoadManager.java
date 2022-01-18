@@ -23,11 +23,12 @@ public class LoadManager {
         String LOADER_PART_A = this.rp.getProperty("LOADER_PART_A");
         String LOADER_PART_B = this.rp.getProperty("LOADER_PART_B");
         String LOADER_PART_C = this.rp.getProperty("LOADER_PART_C");
+        long maxSize = Long.parseLong(this.rp.getProperty("MAX_SIZE"));
 
         this.formatAndLoader = new HashMap<String, DefaultLoadToFile>() {{
             put(LOADER_PART_B, new LoadToXML(maxObjects));
             put(LOADER_PART_A, new LoadToJson<MadaReport>(maxObjects));
-            put(LOADER_PART_C, new LoadCrossedDataToJson<CrossResults>(maxObjects));
+            put(LOADER_PART_C, new LoadCrossedDataToJson<CrossResults>(maxSize));
         }};
     }
 
