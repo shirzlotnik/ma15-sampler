@@ -16,12 +16,11 @@ public class PartA {
 
     public PartA (LoadManager loadManager, ExtractManager extractManager) {
         ReadProperties rp = loadManager.getRp();
-        final String JSON_DIRECTORY_PATH = rp.getProperty("JSON_DIRECTORY_PATH");
-        final String CSV_FILE_PATH = rp.getProperty("MADA_REPORTS_FILE_PATH");
-        final String EXTRACTOR_PART_A = rp.getProperty("EXTRACTOR_PART_A");
-        final String LOADER_PART_A = rp.getProperty("LOADER_PART_A");
-        final String EXTRACTOR_MANAGER_PART_A = rp.getProperty("EXTRACTOR_MANAGER_PART_A");
-        String LOAD_FILE_TYPE_A = rp.getProperty("LOAD_FILE_TYPE_A");
+        String JSON_DIRECTORY_PATH = rp.getProperty("JSON_DIRECTORY_PATH");
+        String CSV_FILE_PATH = rp.getProperty("MADA_REPORTS_FILE_PATH");
+        String EXTRACTOR_PART_A = rp.getProperty("EXTRACTOR_PART_A");
+        String LOADER_PART_A = rp.getProperty("LOADER_PART_A");
+        String EXTRACTOR_MANAGER_PART_A = rp.getProperty("EXTRACTOR_MANAGER_PART_A");
 
 
         DefaultExtractionFromFile efCSV = extractManager.getExtractManager(EXTRACTOR_MANAGER_PART_A)

@@ -31,7 +31,9 @@ public class ReadProperties {
             propertiesMap.put("EXTRACTOR_MANAGER_PART_A", properties.getProperty("EXTRACTOR_MANAGER_PART_A"));
             propertiesMap.put("POSITIVE_CORONA_PEOPLE_DIRECTORY_PATH", properties.getProperty("POSITIVE_CORONA_PEOPLE_DIRECTORY_PATH"));
             propertiesMap.put("LOADER_PART_C", properties.getProperty("LOADER_PART_C"));
-
+            propertiesMap.put("EXTRACTOR_PART_D", properties.getProperty("EXTRACTOR_PART_D"));
+            propertiesMap.put("EXTRACTOR_MANAGER_PART_D", properties.getProperty("EXTRACTOR_MANAGER_PART_D"));
+            propertiesMap.put("SEROLOGY_FILE_PATH", properties.getProperty("SEROLOGY_FILE_PATH"));
 
         } catch (IOException e) {
             e.printStackTrace();
