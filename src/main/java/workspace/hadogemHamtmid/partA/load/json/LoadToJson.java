@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid.partA.load;
+package workspace.hadogemHamtmid.partA.load.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
@@ -18,7 +18,7 @@ public class LoadToJson extends DefaultLoadToFile<MadaReport> {
 
     public LoadToJson (int maxObjects) {
         this.mapper = new ObjectMapper();
-        this.fileCount = 101;
+        this.fileCount = 0;
         this.maxObjects = maxObjects;
     }
 

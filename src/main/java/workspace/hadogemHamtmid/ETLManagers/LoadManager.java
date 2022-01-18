@@ -1,8 +1,8 @@
-package workspace.hadogemHamtmid;
+package workspace.hadogemHamtmid.ETLManagers;
 
 import lombok.Data;
 import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
-import workspace.hadogemHamtmid.partA.load.LoadToJson;
+import workspace.hadogemHamtmid.partA.load.json.LoadToJson;
 import workspace.hadogemHamtmid.partB.load.LoadToXML;
 
 import java.util.HashMap;

@@ -2,7 +2,7 @@ package workspace.hadogemHamtmid.extract;
 
 import workspace.hadogemHamtmid.partA.extract.ExtractMadaReportsFromCsv;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
-import workspace.hadogemHamtmid.partB.extract.ExtractLabTestsFromCSV;
+import workspace.hadogemHamtmid.partB.extract.ExtractLabTests;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public class CSVExtractManager extends DefaultExtractManager{
     public CSVExtractManager() {
         this.objectAndExtractor = new HashMap<String, DefaultExtractionFromFile>() {{
             put("MadaReport", new ExtractMadaReportsFromCsv());
-            put("LabTest", new ExtractLabTestsFromCSV());
+            put("LabTest", new ExtractLabTests());
         }};
     }
 

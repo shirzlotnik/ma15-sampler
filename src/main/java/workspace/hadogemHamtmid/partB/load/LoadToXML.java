@@ -19,7 +19,7 @@ public class LoadToXML extends DefaultLoadToFile<LabTest> {
 
     public LoadToXML (int maxObjects) {
         this.maxObjects = maxObjects;
-        this.fileCount = 9999;
+        this.fileCount = 0;
         this.mXMLf = new MakeXMLFormat();
         this.objectCount = maxObjects;
     }

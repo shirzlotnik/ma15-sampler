@@ -1,9 +1,9 @@
 package workspace.hadogemHamtmid.partB;
 
-import workspace.hadogemHamtmid.LoadManager;
+import workspace.hadogemHamtmid.ETLManagers.LoadManager;
 import workspace.hadogemHamtmid.ReadProperties;
-import workspace.hadogemHamtmid.ExtractManager;
-import workspace.hadogemHamtmid.TransformManager;
+import workspace.hadogemHamtmid.ETLManagers.ExtractManager;
+import workspace.hadogemHamtmid.ETLManagers.TransformManager;
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.partA.load.abstraction.DefaultLoadToFile;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;

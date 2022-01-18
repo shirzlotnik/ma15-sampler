@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid;
+package workspace.hadogemHamtmid.ETLManagers;
 
 import workspace.hadogemHamtmid.extract.CSVExtractManager;
 import workspace.hadogemHamtmid.extract.DefaultExtractManager;

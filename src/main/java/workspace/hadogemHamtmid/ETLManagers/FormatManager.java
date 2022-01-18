@@ -1,4 +1,4 @@
-package workspace.hadogemHamtmid.partB.load.toFormat;
+package workspace.hadogemHamtmid.ETLManagers;
 
 import workspace.hadogemHamtmid.partB.load.toFormat.abstraction.MakeFormat;
 import workspace.hadogemHamtmid.partB.load.toFormat.xml.MakeXMLFormat;

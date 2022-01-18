@@ -1,31 +1,23 @@
 package workspace.hadogemHamtmid.partB.extract;
 
 
-import health_care_provider.HealthCareInfoProvider;
-import health_care_provider.errors.InvalidIdException;
-import health_care_provider.models.PersonInsured;
-
-
 import workspace.hadogemHamtmid.partA.extract.abstraction.DefaultExtractionFromFile;
 import workspace.hadogemHamtmid.partA.extract.fileValidation.FileValidation;
 import workspace.hadogemHamtmid.partB.labTest.LabTest;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
+public class ExtractLabTests extends DefaultExtractionFromFile {
 
 
     private boolean checkRecordValidation (String[] record) {
         if (record[0].equals("IDNum")) {
             return false;
-        } if (record[0].length() < 9) {
-            System.out.println("found invalid ID for:");
-            for (String str:record) {
-                System.out.print(str + ", ");
-            }
+        } if (record[0].length() < 9 || record[0].length() > 9) {
+            System.out.print("found invalid ID: " + record[0] + " for: ");
+            System.out.println(String.format("%s %s", record[2], record[3]));
             return false;
         }
         return true;

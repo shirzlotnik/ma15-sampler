@@ -1,5 +1,7 @@
 package workspace.hadogemHamtmid;
 
+import workspace.hadogemHamtmid.ETLManagers.ExtractManager;
+import workspace.hadogemHamtmid.ETLManagers.LoadManager;
 import workspace.hadogemHamtmid.partA.PartA;
 import workspace.hadogemHamtmid.partB.PartB;
 
