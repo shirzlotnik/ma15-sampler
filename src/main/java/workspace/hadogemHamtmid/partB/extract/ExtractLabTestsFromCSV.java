@@ -44,23 +44,8 @@ public class ExtractLabTestsFromCSV extends DefaultExtractionFromFile {
         String Variant = record[9];
         String TestType = record[10];
 
-        HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
-        int id = Integer.parseInt(IDNum);
-        int idType = Integer.parseInt(IDType);
-        LocalDate JoinDate = null;
-        int HealthCareId = 0;
-        String HealthCareName = "";
-        try {
-            PersonInsured personInsured = healthCareInfoProvider.fetchInfo(id, idType);
-            JoinDate = personInsured.getJoinDate();
-            HealthCareId = personInsured.getHealthCareId();
-            HealthCareName = personInsured.getHealthCareName();
-        } catch (InvalidIdException e) {
-            e.printStackTrace();
-        }
-
         return new LabTest(IDNum, IDType, FirstName, LastName, ResultDate, BirthDate, LabCode, StickerNumber,
-                ResultTestCorona, Variant, TestType, JoinDate, HealthCareId, HealthCareName);
+                ResultTestCorona, Variant, TestType);
     }
 
     @Override

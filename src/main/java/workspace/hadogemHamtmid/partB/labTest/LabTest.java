@@ -23,8 +23,5 @@ public class LabTest {
     String ResultTestCorona;
     String Variant;
     String TestType;
-    LocalDate JoinDate;
-    int HealthCardID;
-    String HealthCardName;
 
 }
