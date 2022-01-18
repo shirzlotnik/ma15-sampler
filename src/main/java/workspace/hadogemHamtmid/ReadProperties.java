@@ -22,6 +22,14 @@ public class ReadProperties {
             propertiesMap.put("MAX_OBJECTS", properties.getProperty("MAX_OBJECTS"));
             propertiesMap.put("XML_DIRECTORY_PATH", properties.getProperty("XML_DIRECTORY_PATH"));
             propertiesMap.put("LAB_TEST_FILE_PATH", properties.getProperty("LAB_TEST_FILE_PATH"));
+            propertiesMap.put("LOADER_PART_B", properties.getProperty("LOADER_PART_B"));
+            propertiesMap.put("EXTRACTOR_PART_B", properties.getProperty("EXTRACTOR_PART_B"));
+            propertiesMap.put("TRANSFORMER_PART_B", properties.getProperty("TRANSFORMER_PART_B"));
+            propertiesMap.put("EXTRACTOR_MANAGER_PART_B", properties.getProperty("EXTRACTOR_MANAGER_PART_B"));
+            propertiesMap.put("LOADER_PART_A", properties.getProperty("LOADER_PART_A"));
+            propertiesMap.put("EXTRACTOR_PART_A", properties.getProperty("EXTRACTOR_PART_A"));
+            propertiesMap.put("EXTRACTOR_MANAGER_PART_A", properties.getProperty("EXTRACTOR_MANAGER_PART_A"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

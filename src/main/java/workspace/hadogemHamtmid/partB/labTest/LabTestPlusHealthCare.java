@@ -16,14 +16,14 @@ public class LabTestPlusHealthCare extends LabTest {
     int HealthCardID;
     String HealthCardName;
 
-    public LabTestPlusHealthCare(String idNum, String idType, String firstName, String lastName, String resultDate,
-                                 String birthDate, String labCode, String stickerNumber, String resultTestCorona,
-                                 String variant, String testType, LocalDate joinDate, int healthCareId,
-                                 String healthCareName) {
-        super(idNum, idType, firstName, lastName, resultDate, birthDate, labCode, stickerNumber, resultTestCorona,
-                variant, testType);
-        this.JoinDate = joinDate;
-        this.HealthCardID = healthCareId;
-        this.HealthCardName = healthCareName;
+    public LabTestPlusHealthCare(String IDNum, String IDType, String FirstName, String LastName,
+                                 String ResultDate, String BirthDate, String LabCode, String StickerNumber,
+                                 String ResultTestCorona, String Variant, String TestType, LocalDate joinDate,
+                                 int healthCardID, String healthCardName) {
+        super(IDNum, IDType, FirstName, LastName, ResultDate, BirthDate, LabCode, StickerNumber, ResultTestCorona,
+                Variant, TestType);
+        JoinDate = joinDate;
+        HealthCardID = healthCardID;
+        HealthCardName = healthCardName;
     }
 }
